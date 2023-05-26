@@ -1,0 +1,469 @@
+//変数
+/*
+$bg-color: #081b29;
+$second-bg-color: #112e42;
+$text-color: #ededed;
+$main-color: #00abf0;
+*/
+
+$bg-color: #0D0D0D;
+$second-bg-color: #1d1b1b;
+$text-color: #ededed;
+$main-color: #8C031C;
+
+/* import */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap');
+
+/* style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Roboto Condensed", "Noto Sans JP", sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: $bg-color;
+    color: $text-color;
+}
+
+ul,li {
+    list-style: none;
+}
+
+
+//ヘッダー
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    
+    background: transparent;
+    transition: .3s;
+
+    //ロゴ
+    .logo {
+        position: relative;
+        font-size: 2.5rem;
+        color: $text-color;
+        font-weight: 700;
+    }
+    //ナビゲーション
+    .navbar {
+        position: relative;
+
+        a {
+            font-size: 1.7rem;
+            color: $text-color;
+            font-weight: 400;
+            margin-left: 3.5rem;
+            transition: .3s;
+
+            &:hover,&.active {
+                color: $main-color;
+            }
+        }
+    }
+    //メニューアイコン
+    #menu-icon {
+        position: relative;
+        font-size: 3.6rem;
+        color: $text-color;
+        cursor: pointer;
+        display: none;//PCサイズでは非表示
+    }
+
+    //sticky
+    &.sticky {
+        background: $bg-color;
+    }
+}
+
+//セクション
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+
+    //見出し文字
+    .heading {
+        position: relative;
+        font-size: 5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    //ホーム
+    &.home {
+        display: flex;
+        align-items: center;
+        padding: 0 9%;
+        //背景指定
+        background: url("/assets/img/eiko.jpg") no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        //ホームコンテンツ
+        .home-content {
+            max-width: 70rem;
+            z-index: 99;
+
+            h1 {
+                position: relative;
+                display: inline-block;
+                font-size: 5.6rem;
+                font-weight: 700;
+            }
+            //テキスト
+            p {
+                position: relative;
+                font-size: 1.6rem;
+                margin: 2rem 0 3.2rem;
+            }
+            //ボタン
+            .btn-box {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                width: 34.5rem;
+                height: 5rem;
+
+                .btn {
+                    position: relative;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 15rem;
+                    height: 100%;
+                    background: $main-color;
+                    border: .2rem solid $main-color;
+                    border-radius: .8rem;
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    letter-spacing: .1rem;
+                    color: $bg-color;
+                    z-index: 1;
+                    overflow: hidden;
+                    transition: .3s;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0;
+                        height: 100%;
+                        background: $bg-color;
+                        z-index: -1;
+                        transition: .3s;
+                    }
+
+                    &:hover {
+                        color: $main-color;
+                    }
+
+                    &:hover::before {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        //ホームイメージホバー
+        .home-imghover {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: transparent;
+            transition: 3s;
+            //ホバー
+            &:hover {
+                background: $bg-color;
+                opacity: .4;
+            }
+        }
+
+    }
+
+    //メンバー
+    &.members {
+        background: $second-bg-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+        padding-bottom: 6rem;
+
+        //メンバーコンテンツ
+        .members-content {
+            width: 100%;
+            margin: 0 auto;
+            font-size: 1.6rem;
+
+            //メンバーリスト
+            .members-list {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 3rem;
+                text-align: center;
+                margin: 0 auto;
+
+                //個人
+                .members-person {
+                    width: 30rem;
+
+                    >* {
+                        margin-bottom: 0.6rem;
+                    }
+
+                    //span
+                    span {
+                        display: block;
+
+                        //SNSアイコン
+                        &.members-snsicon {
+                            color: $text-color;
+                            font-size: 3.2rem;
+                            transition: .3s;
+                            //ホバー
+                            &:hover {
+                                color: $main-color;
+                            }
+                        }
+                    }
+
+                    //画像
+                    .members-icon {
+                        display: block;
+                        width: 67%;
+                        height: auto;
+                        border-radius: 50%;
+                        margin: 0 auto 1.6rem;
+                    }
+
+                    //SNSアイコンリスト
+                    ul {
+                        display: flex;
+                        justify-content: center;
+                        gap: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//ブレークポイント
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 991px) {
+    .header {
+        padding: 2rem 4%;
+    }
+
+    section {
+        padding: 10rem 4% 2rem;
+    }
+
+    .home {
+        padding: 0 4%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        background: $bg-color;
+
+        //メニューアイコン
+        #menu-icon {
+            display: block;
+        }
+        //ナビゲーション
+        .navbar {
+            position: absolute;
+            top: 100%;
+            left: -100%;
+            width: 100%;
+            padding: 1rem 4%;
+            background: $main-color;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+            transition: .2s ease;
+            transition-delay: .2s;
+            z-index: 1;
+
+            .active-nav {
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: $bg-color;
+                border-top: .1rem solid rgba(0, 0, 0, .2);
+                z-index: -1;
+                transition: .2s ease;
+                transition-delay: 0s;
+            }
+
+            a {
+                display: block;
+                font-size: 2rem;
+                margin: 3rem 0;
+                transform: translateX(-20rem);
+                transition: .2s;
+                transition-delay: 0s;
+            }
+
+            //アクティブ状態
+            &.active {
+                left: 0;
+                transition-delay: 0s;
+
+                .active-nav {
+                    left: 0;
+                    transition-delay: .2s;
+                }
+
+                a {
+                    transform: translateX(0);
+                    transition-delay: .2s;
+                }
+            }
+        }
+    }
+
+    section {
+
+        //home
+        &.home {
+            
+            .home-imghover {
+                pointer-events: none;
+                background: $bg-color;
+                opacity: .8;
+            }
+        }
+    }
+}
+
+@media (max-width: 520px) {
+    html {
+        font-size: 50%;
+    }
+
+    section {
+        //home
+        &.home {
+            justify-content: center;
+            //背景指定
+            background: none;
+
+            .home-imghover {
+                display: none;
+            }
+
+            //ホームコンテンツ
+            .home-content {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                text-align: center;
+
+                h1 {
+                    font-size: 4.2rem;
+                }
+
+                //ボタン
+                .btn-box {
+                    margin: 0 auto;
+                }
+            }
+        }
+
+        //メンバー
+        &.members {
+
+            //メンバーコンテンツ
+            .members-content {
+
+                //メンバーリスト
+                .members-list {
+                    gap: 1.6rem;
+
+                    //個人
+                    .members-person{
+                        width: 40%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//ローディングアニメーション
+.animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: $bg-color;
+    z-index: 98;
+}
+
+.animate.home-img {
+    width: 50%;
+}
+
+.logo .animate,
+.navbar .animate,
+#menu-icon .animate,
+.home.show-animate .animate {
+    animation: showright .8s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.animate.scroll {
+    transition: 1s ease;
+    transition-delay: calc(.2s / var(--i));
+    animation: none;
+}
+
+.members .animate {
+    background: $second-bg-color;
+}
+
+.members.show-animate .animate.scroll {
+    transition-delay: calc(.2s * var(--i));
+    width: 0;
+}
+
+@keyframes showright {
+    100% {
+        width: 0;
+    }
+}
